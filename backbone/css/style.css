@@ -1,0 +1,41 @@
+body {
+	font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
+	font-size: 14px;
+	line-height: 1.42857143;
+	color: #333;
+	background-color: #fff;
+}
+#emails {
+	margin:0 auto;
+	padding:10px 5px;
+	width:40%;
+}
+
+#emails table {
+	padding: 10px 5px;
+	width:100%;
+}
+
+th {
+	vertical-align: bottom;
+	border-bottom: 2px solid #ddd;
+}
+
+td {
+	padding: 8px;
+	line-height: 1.42857143;
+	vertical-align: top;
+	border-bottom: 1px solid #ddd;
+}
+
+th.email-actions, td.actions {
+	width:10%;
+}
+
+td.sent, th.sent-header {
+	width:35%;
+}
+
+td.subject {
+	text-align: center;
+}

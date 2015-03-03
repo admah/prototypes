@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+ 
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <title>Backbone.js Web App</title>
+        <link rel="stylesheet" href="css/style.css" />
+    </head>
+    <body>
+        <div id="emails">
+            <table>
+                <thead>
+                    <tr>
+                        <th class="email-actions"></th>
+                        <th class="sent-header">Sent:</th>
+                        <th class="subject-header">Subject:</th>
+                    </tr>
+                </thead>
+            </table>
+        </div>
+        <script id="emailTemplate" type="text/template">
+            <table class="single email-<%= index %>">
+                <tbody>
+                    <tr>
+                        <td class="actions">
+                            <button class="edit">Edit</button>
+                            <button class="delete">Delete</button>
+                        </td>
+                        <td class="sent"><%= sent %></td>
+                        <td class="subject"><%= subject %></td>
+                    </tr>
+                </tbody>
+            </table>
+        </script>
+        <script id="emailEditTemplate" type="text/template">
+            <form action="#">
+                <input type="file" value="<%= picture %>" />
+                <input class="subject" value="<%= subject %>" />
+                <input class="body" value="<%= body %>" />
+                <button class="save">Save</button>
+                <button class="cancel">Cancel</button>
+            </form>
+        </script>
+        <script src="js/jquery-1.11.2.min.js"></script>
+        <script src="js/underscore-min.js"></script>
+        <script src="js/backbone-min.js"></script>
+        <script src="js/app.js"></script>
+    </body>
+</html>
