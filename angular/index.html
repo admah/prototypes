@@ -1,0 +1,19 @@
+<!doctype html>
+<html ng-app="emailYourChildApp">
+<head>
+  <meta charset="utf-8">
+  <title>Email Display App</title>
+  <script src="js/angular.min.js"></script>
+  <script src="js/controllers.js"></script>
+</head>
+<body ng-controller="EmailListCtrl">
+
+  <ul>
+    <li ng-repeat="email in emails">
+      <span>{{email.subject}}</span>
+      <p>{{email.body}}</p>
+    </li>
+  </ul>
+
+</body>
+</html>
