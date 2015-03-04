@@ -52,4 +52,7 @@ emailYourChildApp.controller('EmailListCtrl', function ($scope) {
 	    'sent': 'Friday, June 6, 2014 8:30 AM'
 	  }
   ];
+ $scope.deleteMail = function() {
+    alert('Are you sure?');
+ }
 });

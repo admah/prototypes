@@ -1,19 +1,34 @@
-<!doctype html>
-<html ng-app="emailYourChildApp">
-<head>
-  <meta charset="utf-8">
-  <title>Email Display App</title>
-  <script src="js/angular.min.js"></script>
-  <script src="js/controllers.js"></script>
-</head>
-<body ng-controller="EmailListCtrl">
-
-  <ul>
-    <li ng-repeat="email in emails">
-      <span>{{email.subject}}</span>
-      <p>{{email.body}}</p>
-    </li>
-  </ul>
-
-</body>
+<!DOCTYPE html>
+ 
+<html lang="en" ng-app="emailYourChildApp">
+    <head>
+        <meta charset="UTF-8" />
+        <title>AngularJS Web App</title>
+        <link rel="stylesheet" href="css/style.css" />
+    </head>
+    <body ng-controller="EmailListCtrl">
+      <div id="emails">
+        <table>
+            <thead>
+                <tr>
+                    <th class="email-actions"></th>
+                    <th class="sent-header">Sent:</th>
+                    <th class="subject-header">Subject:</th>
+                </tr>
+            </thead>
+            <tbody>
+              <tr ng-repeat="email in emails" class="single email-{{email.index}}">
+                  <td class="actions">
+                      <button class="edit">Edit</button>
+                      <button ng-click="deleteMail()"class="delete">Delete</button>
+                  </td>
+                  <td class="sent">{{email.sent}}</td>
+                  <td class="subject">{{email.subject}}</td>
+              </tr>
+          </tbody>
+        </table>
+      </div>
+      <script src="js/angular.min.js"></script>
+      <script src="js/controllers.js"></script>
+    </body>
 </html>
