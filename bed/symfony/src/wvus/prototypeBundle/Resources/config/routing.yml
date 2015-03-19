@@ -1,0 +1,15 @@
+wvusprototype_all:
+    pattern:  /donors
+    defaults: { _controller: wvusprototypeBundle:Donor:index }
+
+wvusprototype_edit:
+    pattern:  /donor/edit/
+    defaults: { _controller: wvusprototypeBundle:Donor:edit }
+
+wvusprototype_delete:
+    pattern:  /donor/delete/
+    defaults: { _controller: wvusprototypeBundle:Donor:delete }
+
+wvusprototype_create:
+    pattern:  /donor/create
+    defaults: { _controller: wvusprototypeBundle:Donor:create }

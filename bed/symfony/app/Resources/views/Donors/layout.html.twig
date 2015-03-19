@@ -1,0 +1,4 @@
+{# app/Resources/views/Donors/layout.html.twig #}
+{% if '/create/' in path(app.request.attributes.get('_route')) %}
+    {% set template = 'wvusprototypeBundle:default:create.html.twig' %}
+{% endif %}

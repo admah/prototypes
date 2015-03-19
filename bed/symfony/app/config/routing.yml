@@ -1,0 +1,3 @@
+wvusprototype:
+    resource: "@wvusprototypeBundle/Resources/config/routing.yml"
+    prefix:   /

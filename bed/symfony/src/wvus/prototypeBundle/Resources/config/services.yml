@@ -1,0 +1,7 @@
+parameters:
+#    wvusprototype.example.class: wvus\prototypeBundle\Example
+
+services:
+#    wvusprototype.example:
+#        class: %wvusprototype.example.class%
+#        arguments: [@service_id, "plain_value", %parameter%]
