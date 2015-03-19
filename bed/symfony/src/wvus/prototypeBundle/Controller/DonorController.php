@@ -74,7 +74,7 @@ class DonorController extends Controller
     //Delete a single donor
     public function deleteAction(Request $request)
     {
-        $id = 9;
+        $id = 10;
         $headers = array(
             'Content-Type' => 'application/json',
         );
@@ -91,14 +91,11 @@ class DonorController extends Controller
         new Response($content);
     }
 
-    public function createAction(Request $request)
+    public function createAction()
     {
-        $form = $this->createForm(new DonorType());
+        $data = $_POST;
 
-        if ($request->getMethod() == 'POST') {
-            $form->handleRequest($request);
-    
-            $data = $form->getData();
+        if(isset($data)) {
 
             $first_name = $data['first_name'];
             $last_name  = $data['last_name'];
@@ -135,13 +132,11 @@ class DonorController extends Controller
             $content = json_decode($create->getContent());
 
             $success = 'Donor successfully updated!';
-         
-            //header('Content-Type: application/json');
-            //echo json_encode($content);
-
-            return $this->redirect($this->generateUrl('wvusprototype_all'));
-        }
-
-        return $this->redirect('donors');
+             
+                //header('Content-Type: application/json');
+                //echo json_encode($content);
+            $this->get(‘session’)->getFlashBag()->add(‘success’, $success);
+            return $this->redirectToRoute('wvusprototype_all');
+        } 
     }
 }
