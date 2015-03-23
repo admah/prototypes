@@ -11,84 +11,102 @@ use wvus\prototypeBundle\Form\Type\DonorType;
 
 class DonorController extends Controller
 {
-	  //Display a list of all donors
+    public function listAction()
+    {
+        $buzz = $this->container->get('buzz');
+        $response = $buzz->get('http://dev-prototype-testing.d2.worldvision.org/wv_services/donors/');
+        $donors = json_decode($response->getContent());
+
+    }
+	//Display a list of all donors
     public function indexAction()
     {   
 		$buzz = $this->container->get('buzz');
 		$response = $buzz->get('http://dev-prototype-testing.d2.worldvision.org/wv_services/donors/');
 		$donors = json_decode($response->getContent());
 
-        $form = $this->createForm(new DonorType());
-
 		// renders app/Resources/views/Donors/index.html.twig
-		return $this->render('views/Donors/index.html.twig', array('donors' => $donors, 'form' => $form->createView()));
+		return $this->render('views/Donors/index.html.twig', array('donors' => $donors, 'json_donors' => json_encode($donors)));
     }
 
     //Edit a single donor
     
     public function editAction(Request $request)
     {
-        $id         = 8;
-        $first_name = 'Bruce';
-        $last_name  = 'Wayne';
-        $email      = 'bruce@wayneent.com';
-        $phone      = '123-456-7890';
-        $address_1  = 'Wayne Manor';
-        $address_2  = '';
-        $city       = 'Gotham City';
-        $state      = 'NY';
-        $zip_code   = '00001';
+        $data = $_POST;
 
-        $jsonPayload = json_encode(
-            array(
-                'title'      => $first_name . ' ' . $last_name,
-                'type'       => 'donor',
-                'field_first_name' => array('und' => array(array('value' => $first_name))),
-                'field_last_name' => array('und' => array(array('value' => $last_name))),
-                'field_email' => array('und' => array(array('value' => $email))),
-                'field_phone_number' => array('und' => array(array('value' => $phone))),
-                'field_address_1' => array('und' => array(array('value' => $address_1))),
-                'field_address_2' => array('und' => array(array('value' => $address_2))),
-                'field_city' => array('und' => array(array('value' => $city))),
-                'field_state' => array('und' => array(array('value' => $state))),
-                'field_zip_code' => array('und' => array(array('value' => $zip_code))),
-            )
-        );
+        if(isset($data)) {
 
-        $headers = array(
-            'Content-Type' => 'application/json',
-        );
+            $first_name = $data['first_name'];
+            $last_name  = $data['last_name'];
+            $email      = $data['email'];
+            $phone      = $data['phone'];
+            $address_1  = $data['address_1'];
+            $address_2  = $data['address_2'];
+            $city       = $data['city'];
+            $state      = $data['state'];
+            $zip_code   = $data['zip_code'];
 
-        $buzz = $this->container->get('buzz');
-        $response = $buzz->put('http://dev-prototype-testing.d2.worldvision.org/wv_services/donors/' . $id, $headers, $jsonPayload);
-        $content = json_decode($response->getContent());
+            $jsonData = json_encode(
+                array(
+                    'title'                 => $first_name . ' ' . $last_name,
+                    'type'                  => 'donor',
+                    'field_first_name'      => array('und' => array(array('value' => $first_name))),
+                    'field_last_name'       => array('und' => array(array('value' => $last_name))),
+                    'field_email'           => array('und' => array(array('value' => $email))),
+                    'field_phone_number'    => array('und' => array(array('value' => $phone))),
+                    'field_address_1'       => array('und' => array(array('value' => $address_1))),
+                    'field_address_2'       => array('und' => array(array('value' => $address_2))),
+                    'field_city'            => array('und' => array(array('value' => $city))),
+                    'field_state'           => array('und' => array(array('value' => $state))),
+                    'field_zip_code'        => array('und' => array(array('value' => $zip_code))),
+                )
+            );
 
-        $success = 'Donor successfully updated!';
-     
-        //header('Content-Type: application/json');
-        //echo json_encode($content);
+            $headers = array(
+                'Content-Type' => 'application/json',
+            );
 
-        new Response($content);
+            $buzz = $this->container->get('buzz');
+            $create = $buzz->put('http://dev-prototype-testing.d2.worldvision.org/wv_services/donor/' . $id, $headers, $jsonData);
+            //$content = json_decode($create->getContent());
+
+            $success = 'Donor successfully updated!';
+             
+                //header('Content-Type: application/json');
+                //echo json_encode($content);
+            $this->get(‘session’)->getFlashBag()->add(‘success’, $success);
+            return $this->redirectToRoute('wvusprototype_all');
+        } 
     }
 
     //Delete a single donor
-    public function deleteAction(Request $request)
+    public function deleteAction()
     {
-        $id = 10;
-        $headers = array(
-            'Content-Type' => 'application/json',
-        );
+        $data = $_POST;
 
-    	$buzz = $this->container->get('buzz');
-        $response = $buzz->delete('http://dev-prototype-testing.d2.worldvision.org/wv_services/donors/'. $id, $headers);
-        $content = json_decode($response->getContent());
+        if(isset($data)) {
+            $id = $data['donor_id'];
 
-        $success = 'Donor successfully deleted!';
-     
-        //header('Content-Type: application/json');
-        //echo json_encode($content);
+            $headers = array(
+                'Content-Type' => 'application/json',
+            );
 
-        new Response($content);
+        	$buzz = $this->container->get('buzz');
+            $response = $buzz->delete('http://dev-prototype-testing.d2.worldvision.org/wv_services/donor/'. $id, $headers);
+            $content = json_decode($response->getContent());
+
+            $success = 'Donor successfully deleted!';
+         
+            header('Content-Type: application/json');
+            echo json_encode($content);
+            exit;
+        } else {
+            $error = array( 'error' => 'There was an error.');
+            header('Content-Type: application/json');
+            echo json_encode($error);
+            exit;
+        }
     }
 
     public function createAction()
@@ -107,19 +125,19 @@ class DonorController extends Controller
             $state      = $data['state'];
             $zip_code   = $data['zip_code'];
 
-            $jsonPayload = json_encode(
+            $jsonData = json_encode(
                 array(
-                    'title'      => $first_name . ' ' . $last_name,
-                    'type'       => 'donor',
-                    'field_first_name' => array('und' => array(array('value' => $first_name))),
-                    'field_last_name' => array('und' => array(array('value' => $last_name))),
-                    'field_email' => array('und' => array(array('value' => $email))),
-                    'field_phone_number' => array('und' => array(array('value' => $phone))),
-                    'field_address_1' => array('und' => array(array('value' => $address_1))),
-                    'field_address_2' => array('und' => array(array('value' => $address_2))),
-                    'field_city' => array('und' => array(array('value' => $city))),
-                    'field_state' => array('und' => array(array('value' => $state))),
-                    'field_zip_code' => array('und' => array(array('value' => $zip_code))),
+                    'title'                 => $first_name . ' ' . $last_name,
+                    'type'                  => 'donor',
+                    'field_first_name'      => array('und' => array(array('value' => $first_name))),
+                    'field_last_name'       => array('und' => array(array('value' => $last_name))),
+                    'field_email'           => array('und' => array(array('value' => $email))),
+                    'field_phone_number'    => array('und' => array(array('value' => $phone))),
+                    'field_address_1'       => array('und' => array(array('value' => $address_1))),
+                    'field_address_2'       => array('und' => array(array('value' => $address_2))),
+                    'field_city'            => array('und' => array(array('value' => $city))),
+                    'field_state'           => array('und' => array(array('value' => $state))),
+                    'field_zip_code'        => array('und' => array(array('value' => $zip_code))),
                 )
             );
 
@@ -128,15 +146,16 @@ class DonorController extends Controller
             );
 
             $buzz = $this->container->get('buzz');
-            $create = $buzz->post('http://dev-prototype-testing.d2.worldvision.org/wv_services/donors/', $headers, $jsonPayload);
+            $create = $buzz->post('http://dev-prototype-testing.d2.worldvision.org/wv_services/donors/', $headers, $jsonData);
             $content = json_decode($create->getContent());
 
             $success = 'Donor successfully updated!';
              
-                //header('Content-Type: application/json');
-                //echo json_encode($content);
-            $this->get(‘session’)->getFlashBag()->add(‘success’, $success);
-            return $this->redirectToRoute('wvusprototype_all');
+            header('Content-Type: application/json');
+            echo json_encode($content);
+            exit;
+            //$this->get(‘session’)->getFlashBag()->add(‘success’, $success);
+            //return $this->redirectToRoute('wvusprototype_all');
         } 
     }
 }
