@@ -11,13 +11,6 @@ use wvus\prototypeBundle\Form\Type\DonorType;
 
 class DonorController extends Controller
 {
-    public function listAction()
-    {
-        $buzz = $this->container->get('buzz');
-        $response = $buzz->get('http://dev-prototype-testing.d2.worldvision.org/wv_services/donors/');
-        $donors = json_decode($response->getContent());
-
-    }
 	//Display a list of all donors
     public function indexAction()
     {   
@@ -86,18 +79,13 @@ class DonorController extends Controller
         $data = $_POST;
 
         if(isset($data)) {
-            $id = $data['donor_id'];
-
-            $headers = array(
-                'Content-Type' => 'application/json',
-            );
-
+            //$id = $data['donor_id'];
         	$buzz = $this->container->get('buzz');
-            $response = $buzz->delete('http://dev-prototype-testing.d2.worldvision.org/wv_services/donor/'. $id, $headers);
+            $response = $buzz->delete('http://dev-prototype-testing.d2.worldvision.org/wv_services/donors/' . $id);
             $content = json_decode($response->getContent());
 
             $success = 'Donor successfully deleted!';
-         
+
             header('Content-Type: application/json');
             echo json_encode($content);
             exit;
