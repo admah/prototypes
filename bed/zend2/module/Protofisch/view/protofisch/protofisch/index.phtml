@@ -1,0 +1,418 @@
+                        <div class="controls pull-right">
+                            <button class="btn btn-primary" data-toggle="modal" data-target="#createDonor">Create</button>
+                        </div>
+                        <table class="table clear-fix table-responsive">
+                            <thead>
+                                <tr>
+                                    <th>Name</th>
+                                    <th>Email</th>
+                                    <th>Operations</th>
+                                </tr>
+                            </thead>                
+                            <tbody>
+                                <?php foreach( $donors as $donor ): ?>
+                                <tr data-donor-id="<?php echo $donor->id;?>">
+                                    <td><?php echo $donor->first_name . " " . $donor->last_name ?></td>
+                                    <td><?php echo  $donor->email ?></td>
+                                    <td><a href="" class="btn btn-success edit-action" data-donor-id="<?php echo $donor->id;?>" data-toggle="modal" data-target="#editDonor">Edit</a> <a href="" class="btn btn-danger delete-action" data-toggle="modal" data-target="#deleteDonor" data-donor-id="<?php echo $donor->id;?>">Delete</a></td>
+                                </tr>
+                                <? endforeach; ?>                       
+                            </tbody>                
+                        </table>
+                        <div class="controls pull-right">
+                            <button class="btn btn-primary" data-toggle="modal" data-target="#createDonor">Create</button>
+                        </div>
+
+                        <!-- Hidden Modal -->
+                        <div class="modal fade" id="editDonor" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                            <form action="http://providers.zend2/public/protofisch/edit" class="editdonor" method="post">
+                                <div class="modal-dialog">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                                            <h4 class="modal-title" id="myModalLabel">Edit Donor Data</h4>
+                                        </div>
+                                        <div class="modal-body">
+                                            <div class="data-input">
+                                                <label>First Name</label><br>
+                                                <input type="text" name="first_name"><br>
+                                                <label>Last Name</label><br>
+                                                <input type="text" name="last_name"><br>
+                                                <label>Email</label><br>
+                                                <input type="text" name="email"><br>
+                                                <label>Phone Number</label><br>
+                                                <input type="text" name="phone_number"><br>
+                                                <label>Address Line 1</label><br>
+                                                <input type="text" name="address_1"><br>
+                                                <label>Address Line 2</label><br>
+                                                <input type="text" name="address_2"><br>
+                                                <label>City</label><br>
+                                                <input type="text" name="city"><br>
+                                                <label>State</label><br>
+                                                <input type="text" name="state"><br>
+                                                <label>Zip Code</label><br>
+                                                <input type="text" name="zip_code"><br>
+                                                <input type="hidden" name="donor_id" value="">
+                                            </div>
+
+                                            <div class="processing"></div>
+
+                                            <div class="edit-error"></div>
+                                        </div>
+
+                                        <div class="modal-footer">
+                                            <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+                                            <button type="button" class="btn btn-primary save-action">Save</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+
+                        <!-- Hidden Modal -->
+                        <div class="modal fade" id="createDonor" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                            <form action="http://providers.zend2/public/protofisch/add" class="createdonor" method="post">
+                                <div class="modal-dialog">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                                            <h4 class="modal-title" id="myModalLabel">Create Donor Data</h4>
+                                        </div>
+                                        <div class="modal-body">
+                                            <div class="data-input">
+                                                <label>First Name</label><br>
+                                                <input type="text" name="first_name"><br>
+                                                <label>Last Name</label><br>
+                                                <input type="text" name="last_name"><br>
+                                                <label>Email</label><br>
+                                                <input type="text" name="email"><br>
+                                                <label>Phone Number</label><br>
+                                                <input type="text" name="phone_number"><br>
+                                                <label>Address Line 1</label><br>
+                                                <input type="text" name="address_1"><br>
+                                                <label>Address Line 2</label><br>
+                                                <input type="text" name="address_2"><br>
+                                                <label>City</label><br>
+                                                <input type="text" name="city"><br>
+                                                <label>State</label><br>
+                                                <input type="text" name="state"><br>
+                                                <label>Zip Code</label><br>
+                                                <input type="text" name="zip_code"><br>
+                                            </div>
+
+                                            <div class="processing"></div>
+
+                                            <div class="create-error"></div>
+                                        </div>
+                                        <div class="modal-footer">
+                                            <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+                                            <button type="button" class="btn btn-primary save-action">Save</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+
+                        <!-- Hidden Modal -->
+                        <div class="modal fade" id="deleteDonor" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                            <form action="http://providers.zend2/public/protofisch/delete" class="deletedonor" method="post">
+                                <div class="modal-dialog">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                                            <h4 class="modal-title" id="myModalLabel">Delete</h4>
+                                        </div>
+                                        <div class="modal-body">
+                                            <div class="data-input">
+                                                Are you sure you want to delete this?
+                                                <input type="hidden" name="donor_id" value="">
+                                            </div>
+
+                                            <div class="processing"></div>
+
+                                            <div class="delete-error"></div>
+                                        </div>
+
+                                        <div class="modal-footer">
+                                            <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+                                            <button type="button" class="btn btn-primary delete-action">Delete</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </form>
+                        </div> 
+
+                        <script type="text/javascript">
+                          // Initial Donor Data Array
+                          (function(global, $){
+                            <?php if (isset($donors)): ?>
+                            // Donor Data
+                            var donor_data = <?php echo json_encode($donors) . ";"; ?>
+                            var donors_by_id = {};
+
+                            for ( var i = 0,l = donor_data.length; i < l; i++ ) {
+                                var donor = donor_data[i];
+                                donors_by_id[donor.id] = donor;
+                            }
+                            <?php else: ?>
+                            // Donor Data
+                            var donor_data = [];
+                            var donors_by_id = {};
+                            <?php endif;?>
+
+                            // Expose To Global Scope For Other JavaScript Libraries To Consume
+                            global.protofish = {};
+                            global.protofish.donors = donor_data;
+                            global.protofish.donors_by_id = donors_by_id;
+                          }(window, window.jQuery || null));
+                        </script>
+
+                        <script type="text/javascript">
+                            (function(global, $) {
+                                global.getFormElements = function(form_class) {
+                                    form_class = '.' + (form_class || 'editdonor');
+                                    return {
+                                        'form': $(form_class),
+                                        'donor_id': $(form_class + ' input[name="donor_id"]'),
+                                        'first': $(form_class + ' input[name="first_name"]'),
+                                        'last': $(form_class + ' input[name="last_name"]'),
+                                        'email': $(form_class + ' input[name="email"]'),
+                                        'phone': $(form_class + ' input[name="phone_number"]'),
+                                        'address_1': $(form_class + ' input[name="address_1"]'),
+                                        'address_2': $(form_class + ' input[name="address_2"]'),
+                                        'city': $(form_class + ' input[name="city"]'),
+                                        'state': $(form_class + ' input[name="state"]'),
+                                        'zip': $(form_class + ' input[name="zip_code"]'),
+                                        'donor_id': $(form_class + ' input[name="donor_id"]'),
+                                        'save': $(form_class + ' button.save-action')
+                                    };
+                                }
+
+                                global.populateForm = function(donor) {
+                                    var form = getFormElements('editdonor');
+                                    form.first.val(donor.first_name || '');
+                                    form.last.val(donor.last_name || '');
+                                    form.email.val(donor.email || '');
+                                    form.phone.val(donor.phone_number || '');
+                                    form.address_1.val(donor.address_1 || '');
+                                    form.address_2.val(donor.address_2 || '');
+                                    form.city.val(donor.city || '');
+                                    form.state.val(donor.state || '');
+                                    form.zip.val(donor.zip_code || '');
+                                    form.donor_id.val(donor.id || '');
+                                };
+
+                                global.addDataToTable = function(donor) {
+                                    var table_data = $('table tbody');
+                                    var row = '<tr data-donor-id="'+donor.id+'" style="display:none">';
+                                    row += '<td class="title">'+ donor.first_name + ' ' + donor.last_name +'</td>';
+                                    row += '<td class="email">'+ donor.email + '</td>';
+                                    row += '<td class="actions">';
+                                    row += '<a href="" class="btn btn-success edit-action" data-donor-id="'+donor.id+'" data-toggle="modal" data-target="#editDonor">Edit</a> ';
+                                    row += '<a href="" class="btn btn-danger delete-action" data-donor-id="'+donor.id+'" data-toggle="modal" data-target="#deleteDonor">Delete</a>';
+                                    row += '</td>';
+                                    row += '</tr>';
+                                    table_data.prepend(row);
+                                    donor_id_sel = 'tr[data-donor-id='+donor.id+']';
+                                    console.log(donor_id_sel);
+                                    $(donor_id_sel).fadeIn(800);
+                                };
+
+                                global.updateDataInTable = function(donor) {
+
+                                } 
+
+                                global.getDonorRow = function(id) {
+                                    var row_sel = 'tr[data-donor-id="'+id+'"]';
+                                    var row = $(row_sel);
+                                    if (!row.length) {
+                                        return null;
+                                    }
+
+                                    return {
+                                        row: $(row_sel),
+                                        title: $(row_sel).find('td.title').eq(0),
+                                        email: $(row_sel).find('td.email').eq(0),
+                                        editButton: $(row_sel).find('.edit-action').eq(0),
+                                        deleteButton: $(row_sel).find('.delete-action').eq(0),
+                                    }
+                                }
+
+
+                                global.postData = function(url, success, failure, data) {
+                                    var promise = $.ajax(url, {
+                                        'method': 'POST',
+                                        'success': typeof success === 'function' ? success : function(d) {},
+                                        'error': typeof failure === 'function' ? failure : function(d) {},
+                                        'data': data 
+                                    });
+
+                                    return promise;
+                                }
+
+
+
+                                $(document).ready(function(){
+                                    $('#editDonor .save-action').on('click', function(e){
+                                        var form = $('#editDonor form');
+                                        form.submit();
+                                    });
+
+                                    $('.editdonor').on('submit', function(e){
+                                        e.preventDefault();
+                                        
+                                        var form = $(this);
+                                        var data = form.serializeArray();
+                                        var donor_id = form.find('input[name="donor_id"]').val();
+                                        var url = form.attr('action') + '/' + donor_id;
+                                        var error = function(msg) {
+                                            alert(msg);
+                                        };
+                                        var success = function(d) {
+                                            if (!d) {
+                                                error('There was an error.');
+                                            } else {
+                                                console.log(d);
+                                                alert('Success!!');
+                                            }
+                                        };
+
+                                        // Logging Donor Send
+                                        console.log('sending data...');
+                                        console.log(donor_id);
+                                        console.log(url);
+                                        console.log(data);
+
+
+                                        var promise = postData(
+                                            url, 
+                                            success,
+                                            function(x,t,er) {
+                                                error(er);
+                                            },
+                                            data
+                                        );
+                                    });
+
+                                    $('#createDonor .save-action').on('click', function(e){
+                                        var form = $('#createDonor form');
+                                        form.submit();
+                                    });                        
+
+                                    $('.createdonor').on('submit', function(e){
+                                        e.preventDefault();
+                                        
+                                        var form = $(this);
+                                        var data = form.serializeArray();
+                                        var url = form.attr('action');
+                                        var modal = $('#createDonor').modal;
+                                        var error = function(msg) {
+                                            alert(msg);
+                                        };
+
+                                        var success = function(d) {
+                                            if (!d) {
+                                                error('There was an error.');
+                                            } else {
+                                                console.log('success!');
+                                                console.log(d);
+                                                alert('Success!!');
+                                                modal('hide');
+                                            }
+                                        };
+
+                                        // Logging Donor Send
+                                        console.log('sending data to create...');
+                                        console.log(url);
+                                        console.log(data);
+
+                                        $.ajax(url, {
+                                            'method': 'POST',
+                                            'success': success,
+                                            'error': error,
+                                            'data': data
+                                        });
+                                    }); 
+
+
+                                    // On Edit Modal
+                                    $('#editDonor').on('shown.bs.modal', function(e){
+                                        var edit = $(e.relatedTarget);
+                                        var donor_id = edit.attr('data-donor-id');
+                                        var donors = !!window.protofish && window.protofish.donors_by_id || null;
+
+                                        // Get Donor Object
+                                        donor = donors[donor_id] || null;
+
+                                        if ( !donor ) {
+                                            // Default Error Action
+                                            console.log('Error no donor data found');
+                                        }
+
+                                        console.log(donor);
+
+                                        // Populate Edit Form
+                                        populateForm(donor);
+                                    });
+
+                                    // On Delete Modal
+                                    $('#deleteDonor').on('shown.bs.modal', function(e){
+                                        var del = $(e.relatedTarget);
+                                        var donor_id = del.attr('data-donor-id');
+                                        var donors = !!window.protofish && window.protofish.donors_by_id || null;
+
+                                        // Clear Donor Id Value To Prevent Conflict
+                                        $('#deleteDonor input[name="donor_id"]').val('');
+
+                                        // Set Up Delete Id Submission
+                                        donor = donors[donor_id] || null;
+
+                                        if ( !donor ) {
+                                            // Default Error Action
+                                            console.log('Error no donor data found');
+                                        }
+
+                                        $('#deleteDonor input[name="donor_id"]').val(donor_id);
+                                    });
+
+
+                                    $('#deleteDonor .delete-action').on('click', function(e){
+                                        var form = $('#deleteDonor form');
+                                        form.submit();
+                                    });
+
+                                    $('.deletedonor').on('submit', function(e){
+                                        e.preventDefault();
+                                        
+                                        var form = $(this);
+                                        var donor_id = form.find('input[name="donor_id"]').val();
+                                        var data = form.serializeArray();
+                                        var url = form.attr('action');
+                                        var modal = $('#deleteDonor').modal;
+                                        var error = function(msg) {
+                                            alert(msg);
+                                        };
+                                        var success = function(d) {
+                                            if (!d) {
+                                                error('There was an error');
+                                            } else {
+                                                console.log('success!');
+                                                console.log(d);
+                                                alert('Success!!');
+                                                $('#deleteDonor').modal('hide');           
+                                            }
+                                        };
+
+                                        $.ajax(url,{
+                                            'method': 'POST',
+                                            'success': success,
+                                            'error': error,
+                                            'data': data
+                                        });
+                                    });
+                                });
+
+
+                            }(window, window.jQuery));
+                        </script>
+
