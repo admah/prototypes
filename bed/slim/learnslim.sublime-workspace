@@ -1,0 +1,275 @@
+{
+	"auto_complete":
+	{
+		"selected_items":
+		[
+			[
+				"toLo",
+				"toLowerCase"
+			],
+			[
+				"is_",
+				"is_special_field_data"
+			],
+			[
+				"ac",
+				"accomplishments_impact_term_ids"
+			],
+			[
+				"params",
+				"params"
+			],
+			[
+				"id",
+				"id"
+			]
+		]
+	},
+	"buffers":
+	[
+		{
+			"file": "composer.json",
+			"settings":
+			{
+				"buffer_size": 55,
+				"line_ending": "Unix",
+				"name": "{"
+			}
+		}
+	],
+	"build_system": "",
+	"command_palette":
+	{
+		"height": 207.0,
+		"selected_items":
+		[
+			[
+				"for",
+				"HTMLPrettify: Set Keyboard Shortcuts"
+			]
+		],
+		"width": 449.0
+	},
+	"console":
+	{
+		"height": 0.0
+	},
+	"distraction_free":
+	{
+		"menu_visible": true,
+		"show_minimap": false,
+		"show_open_files": false,
+		"show_tabs": false,
+		"side_bar_visible": false,
+		"status_bar_visible": false
+	},
+	"file_history":
+	[
+		"/Users/pkinlow/Sites/docs/messages/consumers/prototypes/bed/slim/index.php",
+		"/private/etc/host.ac",
+		"/private/etc/hosts.ac",
+		"/Users/pkinlow/Sites/docs/worldvisd7/docroot/m/cws/class/class.child_greeting_video.js",
+		"/Users/pkinlow/Sites/docs/worldvisd7/docroot/sites/all/modules/custom/wvus_our_impact/templates/wvus_our_impact_map.tpl.php",
+		"/private/etc/hosts",
+		"/Users/pkinlow/Sites/docs/wvus/worldvision/docroot/sites/default/env.inc.php",
+		"/Users/pkinlow/Sites/docs/worldvisd7/docroot/sites/all/modules/custom/wvus_our_impact/wvus_our_impact.module",
+		"/Users/pkinlow/Sites/docs/wvusmtk/docroot/sites/all/modules/custom/wvus_our_impact/templates/wvus_our_impact_map.tpl.php",
+		"/Users/pkinlow/Sites/docs/wvusmtk/docroot/sites/all/modules/custom/wvus_our_impact/wvus_our_impact.module",
+		"/Users/pkinlow/Sites/docs/wvusmtk/docroot/sites/all/themes/wvmtk/template.php",
+		"/Users/pkinlow/Sites/docs/wvusmtk/docroot/sites/all/themes/wvmtk/templates/page--node--53.tpl.php",
+		"/Users/pkinlow/Sites/docs/wvus/worldvision/docroot/sites/all/themes/zen/wv/templates/page-our-work.tpl.php",
+		"/Users/pkinlow/Sites/docs/wvusmtk/docroot/sites/all/modules/custom/wvus_our_impact/templates/lightbox-template-all_tab.tpl.php",
+		"/Users/pkinlow/Sites/docs/wvusmtk/docroot/sites/all/modules/custom/wvus_our_impact/templates/lightbox-template-all_top.tpl.php",
+		"/Users/pkinlow/Sites/docs/wvusmtk/docroot/sites/all/modules/custom/wvus_our_impact/css/our-impact.css",
+		"/Users/pkinlow/Sites/docs/wvusmtk/docroot/sites/all/modules/custom/wvus_our_impact/js/ourimpactmap_refactored.js",
+		"/Users/pkinlow/Sites/docs/wvusmtk/docroot/sites/all/modules/custom/wvus_our_impact/js/ourimpactmap.js",
+		"/Users/pkinlow/Sites/docs/wvus/worldvision/docroot/sites/all/modules/googlemap/googlemap-noclusters.js",
+		"/Users/pkinlow/Sites/docs/wvus/worldvision/docroot/sites/all/modules/googlemap/googlemap.module",
+		"/Users/pkinlow/Sites/docs/wvus/worldvision/docroot/sites/all/modules/googlemap/lightbox-template-all.tpl.php",
+		"/Users/pkinlow/Sites/docs/wvus/worldvision/docroot/sites/all/modules/googlemap/ourimpactmap_refactored.js",
+		"/Users/pkinlow/Sites/docs/wvus/worldvision/docroot/sites/all/modules/googlemap/lightbox-template-all_top_test.tpl.php",
+		"/Users/pkinlow/Sites/docs/wvus/worldvision/docroot/sites/all/modules/googlemap/lightbox-template-all_tab.tpl.php",
+		"/Users/pkinlow/Sites/docs/wvus/worldvision/docroot/sites/all/modules/googlemap/lightbox-template_4.tpl.php",
+		"/Users/pkinlow/Sites/docs/wvus/worldvision/docroot/sites/all/modules/googlemap/lightbox-template-all_top.tpl.php",
+		"/Users/pkinlow/Sites/docs/wvus/worldvision/docroot/sites/all/modules/googlemap/ourimpactmap.js",
+		"/Users/pkinlow/Sites/docs/wvus/worldvision/docroot/sites/all/themes/zen/wv/css/our-impact.css",
+		"/Users/pkinlow/Documents/our_impact.tar.gz",
+		"/Users/pkinlow/Sites/docs/wvus/worldvision/docroot/sites/all/modules/googlemap/lightbox-template_2.tpl.php",
+		"/Users/pkinlow/Sites/docs/wvus/worldvision/docroot/sites/all/modules/googlemap/lightbox-template_3.tpl.php",
+		"/Users/pkinlow/Sites/docs/wvus/worldvision/docroot/sites/all/modules/googlemap/lightbox-template.tpl.php",
+		"/Users/pkinlow/Sites/docs/wvus/worldvision/docroot/sites/all/modules/googlemap/googlemap_ourwork_map.tpl.php",
+		"/Users/pkinlow/Sites/docs/dev_test/sector_tests/proxy.php",
+		"/Users/pkinlow/Sites/docs/dev_test/sector_tests/req.php",
+		"/Users/pkinlow/Sites/docs/dev_test/sector_tests/demo_ajax.js",
+		"/Users/pkinlow/Sites/docs/wvusmtk/.gitignore",
+		"/Users/pkinlow/Sites/docs/wvus/worldvision/docroot/sites/default/local.settings.php",
+		"/Users/pkinlow/Sites/docs/wvusmtk/docroot/sites/default/settings.php",
+		"/Users/pkinlow/Sites/docs/wvus/worldvision/docroot/sites/all/modules/googlemap/googlemap.js",
+		"/private/etc/apache2/extra/httpd-vhosts.conf"
+	],
+	"find":
+	{
+		"height": 35.0
+	},
+	"find_in_files":
+	{
+		"height": 0.0,
+		"where_history":
+		[
+		]
+	},
+	"find_state":
+	{
+		"case_sensitive": false,
+		"find_history":
+		[
+			"faq",
+			"$analytics_path ",
+			"local.thevine",
+			"d7.worldvision",
+			"local.thevine",
+			"d7.worldvision.org",
+			"thevine",
+			"worldvision_get_party_detail",
+			"d7.worldvision",
+			"_setupMobileCgv",
+			"cn.world",
+			"wvus_our_impact_get_config",
+			"start_ourimpactmap",
+			"cws_events",
+			"16px",
+			"#map",
+			"wvus_our_impact_is_json_request",
+			"to_json",
+			"console",
+			"googleimagepath",
+			"filter_statements",
+			"console",
+			"get_fine_print",
+			"wvus_our_impact_get_config",
+			"sector",
+			"2012",
+			"console",
+			"path",
+			"on",
+			"Us Work",
+			"country_urlname\n",
+			"{{{.}}}\n",
+			"sectors",
+			"terms",
+			"$",
+			"ib",
+			"new",
+			"MarkerClusterer",
+			"vhost",
+			"localhost",
+			"dev_test"
+		],
+		"highlight": true,
+		"in_selection": false,
+		"preserve_case": false,
+		"regex": false,
+		"replace_history":
+		[
+		],
+		"reverse": false,
+		"show_context": true,
+		"use_buffer2": true,
+		"whole_word": false,
+		"wrap": true
+	},
+	"groups":
+	[
+		{
+			"selected": 0,
+			"sheets":
+			[
+				{
+					"buffer": 0,
+					"file": "composer.json",
+					"settings":
+					{
+						"buffer_size": 55,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								53,
+								53
+							]
+						],
+						"settings":
+						{
+							"auto_name": "{",
+							"syntax": "Packages/JavaScript/JSON.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				}
+			]
+		}
+	],
+	"incremental_find":
+	{
+		"height": 0.0
+	},
+	"input":
+	{
+		"height": 0.0
+	},
+	"layout":
+	{
+		"cells":
+		[
+			[
+				0,
+				0,
+				1,
+				1
+			]
+		],
+		"cols":
+		[
+			0.0,
+			1.0
+		],
+		"rows":
+		[
+			0.0,
+			1.0
+		]
+	},
+	"menu_visible": true,
+	"replace":
+	{
+		"height": 0.0
+	},
+	"save_all_on_build": true,
+	"select_file":
+	{
+		"height": 0.0,
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"select_project":
+	{
+		"height": 0.0,
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"show_minimap": true,
+	"show_open_files": false,
+	"show_tabs": true,
+	"side_bar_visible": true,
+	"side_bar_width": 150.0,
+	"status_bar_visible": true
+}
