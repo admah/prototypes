@@ -29,6 +29,9 @@ function makeClientRequest($key, $options) {
 	      'user' => '',
 	      'pass' => '',
 	    ),
+	    'headers' => array(
+	    	'SMSESSION' => '',
+	    ),
 	  ),
 	  'donor_info' => array(
 	    'group' => 'istore',
@@ -79,7 +82,12 @@ function makeClientRequest($key, $options) {
   switch ($key) {
   	case 'authn':
   	   $config = $request_config[$key];
-  	  return authnRequest($config, $options);
+  	   return authnRequest($config, $options);
+  	case 'donor_detail' :
+  		 $config = $request_config[$key];
+  		 $config['headers']['SMSESSION'] = $options['SMSESSION'];
+  		 $config['parameters']['party_identifier'] = $options['id'];
+       return donorRequest($config);
   	default:
   	  return;
   }
@@ -131,6 +139,10 @@ function authnRequest($config, $options) {
 
   // Send Request
   return $req;
+}
+
+function donorRequest($config){
+  
 }
 
 function getAuthCreds() {
