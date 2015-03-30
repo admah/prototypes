@@ -11,5 +11,6 @@ $client = new Client();
 include 'routes/authn.php';
 include 'routes/donors.php';
 include 'routes/children.php';
+include 'routes/media.php';
 
 $app->run();
