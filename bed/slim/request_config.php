@@ -32,6 +32,7 @@ function makeClientRequest($key, $options) {
 	    'headers' => array(
 	    	'SMSESSION' => '',
 	    ),
+	    'children' => '',
 	  ),
 	  'donor_info' => array(
 	    'group' => 'istore',
@@ -85,9 +86,10 @@ function makeClientRequest($key, $options) {
   	   return authnRequest($config, $options);
   	case 'donor_detail' :
   		 $config = $request_config[$key];
-  		 $config['headers']['SMSESSION'] = $options['SMSESSION'];
-  		 $config['parameters']['party_identifier'] = $options['id'];
-       return donorRequest($config);
+       return donorRequest($config, $options);
+    case 'donor_detail_children' :
+  		 $config = $request_config[$key];
+       return donorChildrenRequest($config, $options);
   	default:
   	  return;
   }
@@ -141,8 +143,38 @@ function authnRequest($config, $options) {
   return $req;
 }
 
-function donorRequest($config){
-  
+function donorRequest($config, $options){
+  $client = new Client();
+
+  // Set Method
+  $method = $config['method'];
+
+  $queryParameters = isset($config['query']) ? $config['query'] : $options['parameters'];
+  $headers = isset($options['headers']) ? $options['headers'] : '';
+
+  // Set URL
+  if($options['children'] == TRUE) {
+  	$url = 'https://serviceonedev.worldvision.org/i3/parties/x/children.json';
+  } else {
+    $url = $config['url'];
+  }
+ 
+  $opts = array();
+
+  if (!empty($headers)) {
+    $opts['body'] = $headers;
+  }
+
+  // Set Client Object
+  $req = $client->createRequest($method, $url, $opts);
+
+  // Set Query
+  if (!empty($queryParameters)) {
+  	$req->setQuery($queryParameters);
+  }
+
+  //$vars = array('headers' => $headers, 'query' => $queryParameters, 'options' => $options);
+  return $req;
 }
 
 function getAuthCreds() {
