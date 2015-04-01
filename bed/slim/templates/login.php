@@ -69,7 +69,7 @@
 
         <!-- Hidden Modal -->
         <div class="modal fade in" id="login" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-          <form id="slim-login" action="/authn">
+          <form id="slim-login" action="/authn" method="post">
             <div class="modal-dialog">
               <div class="modal-content">
                 <div class="modal-header">

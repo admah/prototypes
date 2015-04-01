@@ -22,22 +22,30 @@ $app->get('/child/:id', function($id) use ($app) {
 // Child Detail With Media
 $app->get('/child/:id/media', function($id) use ($app) {
 
-  $data = $app->wvReq->getChildDetail($id)->send();
+  $data = $app->wvReq->getChildDetail($id)->getChildMedia($id)->send();
 
-  if ( $data[0]['error'] == false ) {
-    $json = $data[0]['response']->json();
-    header('Content-Type: application/json');
-    echo json_encode($json);
+  $childDetail = $data[0];
+  $childMedia = $data[1];
+
+  if ($childDetail['error']) {
+    $childDetailData = array('error');
   } else {
-    $error = $data[0]['exception'];
-    header('Content-Type: application/json');
-    echo json_encode(array("error"));
+    $childDetailData = $childDetail['response']->json();
   }
-});
 
-// Child Detail With Media
-$app->post('/post/authn', function() use ($app) {
+  if ($childMedia['error']) {
+    $childMediaData = array('error');
+  } else {
+    $childMediaData = json_decode(json_encode($childMedia['response']->xml(), TRUE), TRUE);
+  }
 
-  var_dump($app->wvReq->postAuthn()->send());
+
+  $payload = array(
+  	'childDetail' => $childDetailData,
+  	'childMedia' => $childMediaData,
+  );
+
+  header('Content-Type: application/json');
+  echo json_encode($payload);
 
 });
