@@ -99,17 +99,15 @@ function makeClientRequest($key, $options) {
 
 function authnRequest($config, $options) {
   $client = new Client();
-
+ 
   // Get Auth
   $auth = isset($options['auth']) ? $options['auth'] : 
   	(isset($config['auth']) ? $config['auth'] : array('user' => '', 'pass' => ''));
   $auth_opt = array($options['auth']['user'], $options['auth']['pass']);
-  //var_dump($options['auth']);
-  //var_dump($auth);
 
   // Set Method
   $method = $config['method'];
-
+ 
   // Get Parameters
   if (in_array($method, array('POST'))) {
   	$bodyParameters = $config['parameters'];

@@ -7,7 +7,14 @@ use GuzzleHttp\Exception\RequestException;
 // Authn Request POST
 $app->post('/authn', function() use ($app) {
 
-  $data = $app->wvReq->postAuthn()->send();
+  if($app->request()->isPost()) {
+    $creds = array(
+      'user' => $app->request()->post('user'),
+      'pass' => $app->request()->post('pass'),
+    );
+  }
+
+  $data = $app->wvReq->postAuthn($creds)->send();
 
   if ( $data[0]['error'] == false ) {
     $json = $data[0]['response']->json();

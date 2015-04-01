@@ -280,6 +280,8 @@ class WvRequest extends \Slim\Middleware
         $pass = '';
         $headers = $this->app->request->headers;
 
+        $authPostLogin = $this->app->request->post();
+
         if (isset($_SERVER['REDIRECT_HTTP_AUTHORIZATION'])) {
             if(preg_match("/Basic\s+(.*)$/i", $_SERVER['REDIRECT_HTTP_AUTHORIZATION'], $matches)) {
               list($user, $pass) = explode(":", base64_decode($matches[1]));
@@ -309,10 +311,14 @@ class WvRequest extends \Slim\Middleware
         }
     }
 
-    public function postAuthn()
-    {
-        $auth = $this->authCreds;
-
+    public function postAuthn($creds = NULL)
+    {   
+        if(!empty($creds)) {
+          $auth = $creds;
+        } else {
+          $auth = $this->authCreds;
+        }
+        
         $opts = array(
             'auth' => $auth,
         );
