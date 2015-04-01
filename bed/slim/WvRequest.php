@@ -315,6 +315,16 @@ class WvRequest extends \Slim\Middleware
 
     public function getDonorDetail($id)
     {
+        $auth = $this->authCreds;
+        $query = array('party_identifier' => $id);
+
+        $opts = array(
+            'query' => $query,
+            'auth' => $auth
+        );
+
+        $this->getReq('donor_detail', $opts);
+
         return $this;
     }
 
