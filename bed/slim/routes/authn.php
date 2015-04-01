@@ -18,8 +18,10 @@ $app->post('/authn', function() use ($app) {
 
   if ( $data[0]['error'] == false ) {
     $json = $data[0]['response']->json();
-    header('Content-Type: application/json');
-    echo json_encode($json);
+    /*header('Content-Type: application/json');
+    echo json_encode($json);*/
+    $app->view();
+    $app->render('donor_auth.php', array('data' => $json));
   } else {
     $error = $data[0]['exception'];
     header('Content-Type: application/json');
