@@ -20,10 +20,19 @@ class WvRequest extends \Slim\Middleware
     public $requests;
     private $authCreds;
     private $smsession;
+    private $authConfigCreds = array();
 
-    public function __construct($config = null)
+    public function __construct($config = null, $authConfig = null)
     {
+
+
         $this->setConfigs($config);
+
+        if ($authConfig) {
+            $authConfig = json_decode($authConfig, TRUE);
+            $this->authConfigCreds = $authConfig;
+        }
+
         $this->client = new Client();
     }
 
@@ -350,7 +359,8 @@ class WvRequest extends \Slim\Middleware
 
     public function getChildMedia($id)
     {
-        $auth = $this->authCreds;
+        //$auth = $this->authCreds;
+        $auth = $this->authConfigCreds['rmt'];
         $query = array('child_code' => $id);
 
         $opts = array(
@@ -365,7 +375,8 @@ class WvRequest extends \Slim\Middleware
 
     public function getProjectMedia($id)
     {
-        $auth = $this->authCreds;
+        //$auth = $this->authCreds;
+        $auth = $this->authConfigCreds['rmt'];
         $query = array('project_code' => $id);
 
         $opts = array(

@@ -13,9 +13,12 @@ $client = new Client();
 //Include Request Config and Auth
 
 include 'request_config.php';
+include 'getConfig.php';
+
+$configfile = getConfigFile();
 
 // Use Middleware
-$app->add(new WvRequest());
+$app->add(new WvRequest(null, $configfile));
 
 // $app->get('/', function() use ($app) {
 //   $app->render('login.php');
