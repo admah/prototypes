@@ -11,6 +11,7 @@
 <link href="templates/uikit/css/wvus.uikit.min.css" rel="stylesheet" />
 
 <!-- JS -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
 <script src="templates/uikit/js/jquery.min.js"></script>
 <script src="templates/uikit/js/wvus.uikit.min.js"></script>
 
@@ -46,7 +47,6 @@
   height: 75px;
   line-height: 75px;
 }
-
 </style>
 </head>
 
@@ -68,8 +68,8 @@
         </div>
 
         <!-- Hidden Modal -->
-        <div class="modal fade" id="login" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-          <form action="/authn">
+        <div class="modal fade in" id="login" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+          <form id="slim-login" action="/authn">
             <div class="modal-dialog">
               <div class="modal-content">
                 <div class="modal-header">
@@ -79,14 +79,14 @@
       
                 <div class="modal-body">
                   <label>Username</label><br>
-                  <input type="text" name="first_name"><br>
+                  <input type="text" name="user" width="60"><br>
                   <label>Password</label><br>
-                  <input type="password" name="last_name"><br>
+                  <input type="password" name="pass" width="60"><br>
                 </div>
 
                 <div class="modal-footer">
                   <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
-                  <button type="button" class="btn btn-primary" id="edit-button">Save</button>
+                  <button type="button" class="btn btn-primary" id="login-button">Login</button>
                 </div>
               </div>
             </div>
@@ -97,6 +97,15 @@
     </div>
   </div>
 </div>
+<script>
+(function($){
+  $(document).ready(function(){
+    $('#login-button').click(function(){
+      $('form#slim-login').submit();
+    });
+  });
+}(jQuery));
+</script>
 
 </body>
 </html>
