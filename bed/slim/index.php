@@ -8,6 +8,8 @@ use Slim\View;
 
 $app = new \Slim\Slim();
 
+$app->config('templates.path','templates');
+
 $client = new Client();
 
 //Include Request Config and Auth
@@ -20,9 +22,10 @@ $configfile = getConfigFile();
 // Use Middleware
 $app->add(new WvRequest(null, $configfile));
 
-// $app->get('/', function() use ($app) {
-//   $app->render('login.php');
-// });
+$app->get('/', function() use ($app) {
+	$app->view();
+  $app->render('login.php');
+});
 
 // Include Routes
 include 'routes/authn.php';
