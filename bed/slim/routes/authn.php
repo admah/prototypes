@@ -20,6 +20,13 @@ $app->post('/authn', function() use ($app) {
     $json = $data[0]['response']->json();
     /*header('Content-Type: application/json');
     echo json_encode($json);*/
+
+    //Set SMSESSION cookie
+    $smsession = $json['Auth_Party_Resp']['SMSESSION'];
+    $expires = time() + 3600;
+    $app->setCookie('smsession', $smsession, $expires);
+
+    //Render Donor info template
     $app->view();
     $app->render('donor_auth.php', array('data' => $json));
   } else {
